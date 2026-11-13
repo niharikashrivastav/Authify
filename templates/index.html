@@ -1,0 +1,95 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home · Flask Auth Lite{% endblock %}
+
+{% block content %}
+
+<div class="min-h-[70vh] flex flex-col justify-center">
+
+  <!-- Hero Section -->
+  <div class="text-center mb-12">
+
+    <div class="text-5xl mb-6">🌿</div>
+
+    <p class="text-lg font-semibold tracking-[0.3em] uppercase text-[#789B7D] mb-3">
+      Welcome to Authify
+    </p>
+
+    
+
+    <p class="text-[#607D68] text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+      A simple and secure authentication platform.
+      Create your account, sign in, and enjoy your personal space.
+    </p>
+
+    <div class="w-20 h-1 bg-[#789B7D] rounded-full mx-auto mt-7"></div>
+
+  </div>
+
+
+  <!-- Authentication Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto w-full">
+
+    <!-- Register -->
+    <a href="/register"
+       class="group rounded-3xl border border-[#C4D8C5]
+       bg-[#E5EFE3] p-8 transition-all duration-300
+       hover:-translate-y-2 hover:shadow-xl hover:shadow-[#234B38]/10">
+
+      <div class="w-14 h-14 rounded-2xl bg-[#315C43]
+                  flex items-center justify-center text-3xl text-white mb-6">
+        ✧
+      </div>
+
+      <h2 class="text-2xl font-bold text-[#234B38] mb-3">
+        Create Account
+      </h2>
+
+      <p class="text-sm text-[#607D68] leading-relaxed mb-7">
+        New here? Create your account and get started on your journey.
+      </p>
+
+      <span class="inline-flex items-center gap-2 text-sm font-bold text-[#315C43]
+                   group-hover:gap-4 transition-all">
+        Register now <span>→</span>
+      </span>
+
+    </a>
+
+
+<!-- Login -->
+<div class="relative z-10">
+    <a href="/login"
+       class="block cursor-pointer rounded-3xl border border-[#315C43]
+       bg-[#315C43] p-8 transition-all duration-300
+       hover:-translate-y-2 hover:shadow-xl hover:shadow-[#234B38]/20">
+
+        <div class="w-14 h-14 rounded-2xl bg-[#456F54]
+                    flex items-center justify-center text-3xl text-[#E5EFE3] mb-6">
+            ↗
+        </div>
+
+        <h2 class="text-2xl font-bold text-[#F1F5EC] mb-3">
+            Welcome Back
+        </h2>
+
+        <p class="text-sm text-[#D0E0D0] leading-relaxed mb-7">
+            Already have an account? Sign in and continue where you left off.
+        </p>
+
+        <span class="inline-flex items-center gap-2 text-sm font-bold text-[#E5EFE3]">
+            Login now <span>→</span>
+        </span>
+
+    </a>
+</div>
+
+
+  <p class="text-center text-xs tracking-widest text-[#78927B] mt-12 uppercase">
+    Secure · Simple · Minimal
+  </p>
+
+</div>
+
+{% endblock %}

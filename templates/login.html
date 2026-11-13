@@ -1,0 +1,114 @@
+
+{% extends "base.html" %}
+
+{% block title %}Login · Authify{% endblock %}
+
+{% block content %}
+
+<div class="min-h-[70vh] flex items-center justify-center">
+
+  <div class="w-full max-w-md">
+
+    <!-- Heading -->
+    <div class="text-center mb-8">
+
+      <div class="text-5xl mb-5">🌿</div>
+
+      <h1 class="text-3xl sm:text-4xl font-bold text-[#234B38] mb-3">
+        Welcome Back
+      </h1>
+
+      <p class="text-[#607D68]">
+        Sign in to continue to your Authify account.
+      </p>
+
+    </div>
+
+    <!-- Login Form Card -->
+    <div class="bg-[#FAFBF7] border border-[#C4D8C5]
+                rounded-3xl p-8 shadow-lg">
+
+      <form method="POST" action="{{ url_for('login') }}">
+
+        <input type="hidden" name="next" value="{{ request.args.get('next', '') }}">
+
+        <!-- Error Messages -->
+        {% if errors %}
+          <div class="mb-5 rounded-xl bg-red-50 border border-red-200 p-4">
+            {% for error in errors %}
+              <p class="text-sm text-red-700">{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <!-- Email -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-[#315C43] mb-2">
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Enter your email"
+            class="w-full rounded-xl border border-[#C4D8C5]
+                   bg-white px-4 py-3 text-[#234B38]
+                   focus:border-[#789B7D] outline-none">
+        </div>
+
+        <!-- Password -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-[#315C43] mb-2">
+            Password
+          </label>
+
+          <input
+            type="password"
+            name="password"
+            required
+            placeholder="Enter your password"
+            class="w-full rounded-xl border border-[#C4D8C5]
+                   bg-white px-4 py-3 text-[#234B38]
+                   focus:border-[#789B7D] outline-none">
+        </div>
+
+        <!-- Remember Me -->
+        <div class="flex items-center gap-2 mb-7">
+          <input
+            type="checkbox"
+            name="remember"
+            value="1"
+            class="accent-[#315C43]">
+          <label class="text-sm text-[#607D68]">
+            Remember me
+          </label>
+        </div>
+
+        <!-- Login Button -->
+        <button
+          type="submit"
+          class="w-full rounded-xl bg-[#315C43] text-white
+                 font-semibold py-3 transition-all duration-300
+                 hover:bg-[#234B38] hover:shadow-lg">
+          Login
+        </button>
+
+      </form>
+
+      <!-- Register Link -->
+      <p class="text-center text-sm text-[#607D68] mt-7">
+        Don't have an account?
+        <a href="{{ url_for('register') }}"
+           class="font-bold text-[#315C43] hover:underline">
+          Create Account
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

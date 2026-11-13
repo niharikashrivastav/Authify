@@ -1,0 +1,139 @@
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard · Flask Auth Lite{% endblock %}
+
+{% block content %}
+
+<section class="mx-auto max-w-4xl py-6">
+
+  <div class="rounded-3xl border border-[#DCE7D9] bg-[#FAFBF7]
+              p-6 sm:p-9 shadow-lg shadow-[#234B38]/5">
+
+    <!-- Welcome Section -->
+    <div class="flex flex-col sm:flex-row sm:items-center
+                justify-between gap-5">
+
+      <div>
+        <p class="text-sm font-semibold tracking-widest uppercase
+                  text-[#789B7D] mb-2">
+          Your Personal Space
+        </p>
+
+        <h1 class="text-2xl sm:text-3xl font-bold text-[#234B38]">
+          Welcome, {{ current_user.username }} 👋
+        </h1>
+
+        <p class="mt-2 text-sm text-[#78927B]">
+          It's great to have you here!
+        </p>
+      </div>
+
+
+      <div class="flex flex-wrap items-center gap-3">
+
+        <a
+          href="{{ url_for('change_password') }}"
+          class="rounded-xl bg-[#E5EFE3] border border-[#C4D8C5]
+                 px-4 py-2.5 text-[#315C43] font-semibold
+                 text-sm hover:bg-[#D5E5D3] transition">
+          Change Password
+        </a>
+
+        <a
+          href="{{ url_for('logout') }}"
+          class="rounded-xl bg-[#FCE8E6] border border-[#F3C7C2]
+                 px-4 py-2.5 text-[#A34242] font-semibold
+                 text-sm hover:bg-[#F8DAD6] transition">
+          Logout ↗
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="h-px bg-[#DCE7D9] my-8"></div>
+
+
+    <!-- Protected Account Information -->
+    <div class="mb-6">
+
+      <h2 class="text-lg font-bold text-[#234B38]">
+        Your Dashboard
+      </h2>
+
+      <p class="text-sm text-[#78927B] mt-1">
+        You are successfully logged in to your account.
+      </p>
+
+    </div>
+
+
+    <!-- Dashboard Cards -->
+    <div class="grid gap-5 md:grid-cols-2">
+
+      <div class="rounded-2xl bg-[#E5EFE3] border border-[#C4D8C5]
+                  p-6 transition hover:shadow-md">
+
+        <div class="text-3xl mb-4">🌱</div>
+
+        <h3 class="font-bold text-[#315C43] text-lg mb-2">
+          Overview
+        </h3>
+
+        <p class="text-sm text-[#607D68] leading-relaxed">
+          Your account is active and ready to use.
+          More features and widgets can be added here later.
+        </p>
+
+      </div>
+
+
+      <div class="rounded-2xl bg-[#315C43] border border-[#315C43]
+                  p-6 transition hover:shadow-md">
+
+        <div class="text-3xl mb-4">✧</div>
+
+        <h3 class="font-bold text-white text-lg mb-2">
+          Recent Activity
+        </h3>
+
+        <p class="text-sm text-[#D0E0D0] leading-relaxed">
+          Nothing here yet. Your activity updates can be displayed here
+          as your application grows.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Security Information -->
+    <div class="mt-7 rounded-2xl border border-[#DCE7D9]
+                bg-[#F3F6EF] p-5">
+
+      <div class="flex items-start gap-3">
+
+        <span class="text-xl">🔒</span>
+
+        <div>
+          <h3 class="text-sm font-bold text-[#315C43]">
+            Your account is protected
+          </h3>
+
+          <p class="text-xs text-[#78927B] mt-1 leading-relaxed">
+            This is a protected page. Only authenticated users
+            can access this dashboard.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

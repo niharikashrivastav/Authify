@@ -1,0 +1,145 @@
+
+{% extends "base.html" %}
+
+{% block title %}Register · Flask Auth Lite{% endblock %}
+
+{% block content %}
+
+<section class="mx-auto max-w-md py-6">
+
+  <div class="rounded-3xl border border-[#DCE7D9] bg-[#FAFBF7]
+              p-7 sm:p-9 shadow-lg shadow-[#234B38]/5">
+
+    <div class="text-center mb-7">
+
+      <div class="text-4xl mb-4">✧</div>
+
+      <h1 class="text-3xl font-bold text-[#234B38]">
+        Create Account
+      </h1>
+
+      <p class="mt-2 text-sm text-[#78927B]">
+        Join us! Create your account to get started.
+      </p>
+
+    </div>
+
+
+    {% if errors %}
+    <div class="mb-5 rounded-xl border border-[#F3C7C2]
+                bg-[#FCE8E6] p-4 text-[#A34242] text-sm">
+
+      <ul class="list-disc list-inside space-y-1">
+        {% for e in errors %}
+        <li>{{ e }}</li>
+        {% endfor %}
+      </ul>
+
+    </div>
+    {% endif %}
+
+
+    <form class="space-y-4" method="post" action="/register" novalidate>
+
+      <div>
+        <label for="username"
+               class="block text-sm font-semibold text-[#315C43] mb-2">
+          Username
+        </label>
+
+        <input
+          id="username"
+          name="username"
+          type="text"
+          required
+          minlength="3"
+          maxlength="80"
+          class="w-full rounded-xl bg-white border border-[#C4D8C5]
+                 px-4 py-3 text-[#234B38] placeholder-[#A0B5A0]"
+          placeholder="Choose a username"
+        />
+      </div>
+
+
+      <div>
+        <label for="email"
+               class="block text-sm font-semibold text-[#315C43] mb-2">
+          Email Address
+        </label>
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          maxlength="120"
+          class="w-full rounded-xl bg-white border border-[#C4D8C5]
+                 px-4 py-3 text-[#234B38] placeholder-[#A0B5A0]"
+          placeholder="you@example.com"
+        />
+      </div>
+
+
+      <div>
+        <label for="password"
+               class="block text-sm font-semibold text-[#315C43] mb-2">
+          Password
+        </label>
+
+        <input
+          id="password"
+          name="password"
+          type="password"
+          required
+          minlength="6"
+          class="w-full rounded-xl bg-white border border-[#C4D8C5]
+                 px-4 py-3 text-[#234B38] placeholder-[#A0B5A0]"
+          placeholder="Create a password"
+        />
+      </div>
+
+
+      <div>
+        <label for="confirm_password"
+               class="block text-sm font-semibold text-[#315C43] mb-2">
+          Confirm Password
+        </label>
+
+        <input
+          id="confirm_password"
+          name="confirm_password"
+          type="password"
+          required
+          minlength="6"
+          class="w-full rounded-xl bg-white border border-[#C4D8C5]
+                 px-4 py-3 text-[#234B38] placeholder-[#A0B5A0]"
+          placeholder="Confirm your password"
+        />
+      </div>
+
+
+      <button
+        type="submit"
+        class="w-full mt-3 rounded-xl bg-[#315C43] text-white
+               font-semibold px-4 py-3
+               hover:bg-[#234B38] transition duration-300
+               shadow-md shadow-[#315C43]/15">
+        Create Account →
+      </button>
+
+    </form>
+
+
+    <p class="mt-7 text-center text-sm text-[#78927B]">
+      Already have an account?
+      <a href="/login"
+         class="font-bold text-[#315C43] hover:underline">
+        Sign In
+      </a>
+    </p>
+
+  </div>
+
+</section>
+
+{% endblock %}

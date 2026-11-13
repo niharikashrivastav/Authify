@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{% block title %}Flask Auth Lite{% endblock %}</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: "#E5EFE3",
+            "sage-light": "#F3F6EF",
+            "sage-dark": "#C4D8C5",
+            forest: "#315C43",
+            "forest-dark": "#234B38",
+            muted: "#607D68",
+            cream: "#FAFBF7"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    input {
+      transition: all 0.2s ease;
+    }
+
+    input:focus {
+      border-color: #789B7D !important;
+      box-shadow: 0 0 0 3px rgba(120, 155, 125, 0.18);
+      outline: none;
+    }
+
+    ::selection {
+      background: #C4D8C5;
+      color: #234B38;
+    }
+  </style>
+</head>
+
+<body class="min-h-full bg-[#F3F6EF] text-[#234B38] flex flex-col">
+
+  <!-- Navbar -->
+  <header class="bg-[#FAFBF7] border-b border-[#DCE7D9] shadow-sm">
+    <div class="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
+
+      <a href="{{ url_for('index') }}"
+         class="flex items-center gap-2 group">
+
+        <span class="text-3xl">🌿</span>
+
+        <span class="text-xl font-bold tracking-tight text-[#234B38]">
+          Auth<span class="text-[#789B7D]">ify</span><span class="text-[#315C43]">.com</span>
+        </span>
+
+      </a>
+
+      <span class="hidden sm:block text-xs tracking-widest uppercase text-[#78927B]">
+        Simple · Secure · Minimal
+      </span>
+
+    </div>
+  </header>
+
+
+  <!-- Main Content -->
+  <main class="mx-auto w-full max-w-6xl px-5 sm:px-6 py-10 flex-grow">
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+      {% if messages %}
+        <div class="space-y-3 mb-6">
+
+          {% for category, message in messages %}
+
+            <div class="rounded-xl px-4 py-3 text-sm text-center border shadow-sm
+              {% if category == 'success' %}
+                bg-[#E5EFE3] text-[#315C43] border-[#C4D8C5]
+              {% elif category == 'error' %}
+                bg-[#FCE8E6] text-[#A34242] border-[#F3C7C2]
+              {% else %}
+                bg-[#FAFBF7] text-[#607D68] border-[#DCE7D9]
+              {% endif %}
+            ">
+              {{ message }}
+            </div>
+
+          {% endfor %}
+
+        </div>
+      {% endif %}
+
+    {% endwith %}
+
+
+    <!-- Individual Page Content -->
+    {% block content %}{% endblock %}
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="mt-auto bg-[#FAFBF7] border-t border-[#DCE7D9]">
+    <div class="mx-auto max-w-6xl px-5 py-6 text-center">
+
+      <p class="text-sm text-[#78927B]">
+        🌿 Built with Flask, SQLite, Flask-Login & Tailwind
+      </p>
+
+      <p class="text-xs text-[#A0B5A0] mt-2">
+        © 2026 The Authify · All rights reserved
+      </p>
+
+    </div>
+  </footer>
+
+</body>
+</html>
